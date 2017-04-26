@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  
+    
+    <entry>
+      <title><![CDATA[添加音乐分享]]></title>
+      <url>%2Fforever%2F4c2a29f2%2F</url>
+      <content type="text"><![CDATA[先来看下效果图： 添加步骤：第一方面： 登录自己的网易云音乐，在个人主页中找一个歌单，或者新建一个专门用于博客分享的歌单，以后在网易云音乐中添加到歌单的歌曲，在博客中是会同步的。 点击进去歌单后，找到生成外链播放器字样，如图： 进去后出现以下界面，选择iframe插件，尺寸可以按照自己喜欢进行选择，我的是310*430，这个尺寸可以看见播放歌曲的名字，自动播放选项按自己爱好设置吧。 复制代码框中的所有代码。 第二方面： 新建关于页面，打开进行编辑。 把刚才复制好的代码，粘贴到此页面中即可实现。 上传测试！ 重要通知：一切修改，请提前备份！ 可能出现的问题： 音乐外链问题：可能会出现版权问题而无法生成外链，可能是你的歌单中存在版权的歌曲，自己检查修改。 发表此篇文章前，并没有出现版权问题不能分享的。但是刚才为了发文章进行测试时，发现已经有这个问题了。（我是先集成好后，过了几天才发表的此文章） 关于页面代码问题：把音乐分享代码复制到关于页面中后，出现下图所示错误： 虽然出现这个错误，但是测试后是没有任何问题的，歌曲正常播放，可以手动选择曲目进行播放。 本来想把音乐分享放到博客首页的，但是出现显示格式不好看，以及每次点击别的菜单后，会重新播放的问题，只能放到某一个页面中去。如谁有更好的方法，欢迎留言讨论。]]></content>
+    </entry>
+
+    
+    <entry>
+      <title><![CDATA[修改评论系统]]></title>
+      <url>%2Fforever%2Fdda0014b%2F</url>
+      <content type="text"><![CDATA[前言：没更新之前用的是《多说》，相信很多博主都是用的《多说》。 但是最近官网公布《多说》将于2017年6月1日正式关停服务。所以需要寻找出路了。 官方通知：http://dev.duoshuo.com/threads/58d1169ae293b89a20c57241 博客中的通知： 目前可以上车的有： 畅言搜狐出品，网站需备案，无备案只能使用15天。 Disqus国外网站首选，国内你懂得！ 友言唯一缺点：导不进多说评论，多说评论导出是json格式，而友言是xml格式。 网易云跟帖网易自家产品，唯一缺点：没有邮件或其他通知有网友评论，需要自己登录后台查看评论。 集成步骤 以下说明均基于Hexo搭建的博客，主题为：next 最新版本的hexo以及next已经支持网易云跟帖字段，请更新后再按照此方法集成。 hexo更新命令：`npm update -g hexo` next更新命令：cd到next主题目录下使用命令：`git pull` 官网集成步骤为Hexo的默认主题：landscape，需要的点此链接进行集成。 先在网易云跟帖官网注册账号，登录后在后台管理中添加你的站点信息，如果你的域名是github.io的话，估计是不能设置的，会显示 站点名称或URL已经存在这时就需要你换个域名了 配置好后，点击获取代码&gt;通用代码中，复制productKey字段后的代码 在Blog/themes/next目录下的配置文件_config.yml中找到gentie_productKey字段，把刚才复制的代码放到此字段后面，记得字段跟值之间有空格 集成网易云跟帖后，无法使用localhost查看效果。 个人建议：集成前备份好整个Blog文件夹，集成后直接提交到github上，然后再查看效果如何。 最终效果图如下：]]></content>
+    </entry>
+
+    
+    <entry>
+      <title><![CDATA[增加背景特效]]></title>
+      <url>%2Fforever%2F6c30868a%2F</url>
+      <content type="text"><![CDATA[增加背景特效以下说明均基于Hexo搭建的博客，主题为：next先放张特效图 其实就是一个基于html5 canvas绘制的网页背景效果，属于开源项目 开源地址：https://github.com/hustcc/canvas-nest.js 原理： 以你的鼠标所在之处为原点，把周围的线条集合起来，形成一个以鼠标为圆心的圆形。 玩法： 可以慢慢移动鼠标来快速收集，也可以静止不动让它自己收集。（其实挺无聊的。。） 添加步骤 打开themes\next\layout\_layout.swig文件 在&lt;body&gt;和&lt;/body&gt;之间插入以下代码即可 &lt;script type=&quot;text/javascript&quot; src=&quot;//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js&quot;&gt;&lt;/script&gt; 官方强烈建议放至&lt;/body&gt;标签上方，例如： &lt;html&gt; &lt;head&gt; ... &lt;/head&gt; &lt;body&gt; ... ... &lt;script type=&quot;text/javascript&quot; src=&quot;//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js&quot;&gt;&lt;/script&gt; &lt;/body&gt; &lt;/html&gt; 但是不要放到&lt;head&gt;&lt;/head&gt;中 参数设置 color：线条颜色，默认：&#39;0,0,0&#39; ；三个数字分别为(R,G,B)，注意用,分割 opacity：线条透明度（0~1），默认：0.5 count：线条的总数量，默认：150 zIndex：背景的z-index属性，css属性用于控制所在层的位置，默认：-1 比如我自己的设置为： &lt;script type=&quot;text/javascript&quot; color=&quot;0,229,238&quot; opacity=&apos;0.5&apos; count=&quot;200&quot; zIndex=&quot;-1&quot; src=&quot;//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js&quot;&gt;&lt;/script&gt; 特别鸣谢： 官方教程：https://github.com/hustcc/canvas-nest.js/blob/master/README-zh.md 网友分享教程：http://jinfang.life/posts/c00b4e03/（此博主有两种方法） RGB颜色对照表：http://www.atool.org/colorpicker.php]]></content>
+    </entry>
+
+    
+    <entry>
+      <title><![CDATA[四大组件]]></title>
+      <url>%2Fforever%2F31815d4e%2F</url>
+      <content type="text"><![CDATA[四大组件之：Activity什么是Activity？Activity是Android系统中的四大组件之一，可以用于显示View。 Activity是一个与用户进行交互的系统模块，几乎所有的Activity都是和用户进行交互的。 Activity的生命周期： onCreate() onStart() onResume() onPause() onStop onDestroy onCreate()：当活动第一次启动时触发该方法，可以在该方法内完成初始化的工作 onStart()：触发该方法表示活动将要被展示给用户 onResume()：当用户与活动进行交互时触发该方法 onPauser()：当第二个活动被展示到前台与用户交互时，第一个活动被转入后台暂停，则触发该方法 onStop()：当活动不需要再展示给用户时触发该方法。但是如果因为是系统直接结束该程序时，不会触发该方法 onRestart()：当处于onStop()状态的活动需要重新展示给用户时触发该方法 onDestroy()：当活动被摧毁时触发该方法。与onStop()一样，如果是系统直接结束该程序时不会触发该方法 一个Activity的启动顺序为： onCreate() ——&gt; onStart() ——&gt; onResume() 当第二个Activity启动时： 第一个Activity ——&gt; onPause() ——&gt; 第二个Activity ——&gt; onCraete() ——&gt; onStart() ——&gt; onResume() ——&gt; 第一个Activity ——&gt; onStop() 当按返回键返回到第一个Activity时： 第二个Activity ——&gt; onPause() ——&gt; 第一个Activity ——&gt; onRestart() ——&gt; onStart() ——&gt; onResume() ——&gt; 第二个Activity ——&gt; onStop() ——&gt; onDestroy() Activity的四个阶段：1. 开始Activity：onCreate() ——&gt; onStart() ——&gt; onResume() 2. Activity失去焦点：onPause() ——&gt; onStop() 3. Activity重获焦点：onRestart() ——&gt; onStart() ——&gt; onResume() 4. 关闭Activity：onPause() ——&gt; onStop() ——&gt; onDestroy() Activity启动模式：standard、singleTop、singleTask、singleInstance1. standard：默认模式，每次激活Activity都会创建Activity实例，并放在回退栈中，该Activity可以被实例化多次 举例：如果当前的Activity名为A，上面有个按钮可以跳转到A，那么点击此按钮，就会新创建一个Activity实例， 会叠加在刚开始的A上面，点几次就会创建几个，此时按back返回键，会按照栈顺序依次退出 2. singleTop：如果在回退栈顶正好存在该Activity实例，则直接重用该实例，否则就会创建新的实例并放入栈顶。 （只要不在栈顶就会重建实例，也就是不允许多个相同Activity叠加）保证栈顶有且只有一个Activity实例对象 举例：若有B1，B2两个Activity，内容相同，都有互相跳转按钮。B1为standard，B2为singleTop。 若打开顺序为：B1&gt;B2&gt;B2，则实际打开为B1&gt;B2，最后一次打开的B2，实际上是重用了回退栈中的B2 若打开顺序为：B1&gt;B2&gt;B1&gt;B2，则实际打开顺序也是如此。 3. singleTask：如果该栈中已经存在该Activity实例，则直接重用该实例。重用时，会让该实例回到栈顶， 但是该实例上面的所有实例将会被移除栈。如果栈中无此实例，则直接创建新的实例放入栈中。 举例：此时有Activity C1,C2,C3，C3模式为singleTask，都可以进行互相跳转。 此时意图打开顺序为：C1&gt;C3&gt;C2&gt;C1&gt;C3，若此时按back返回键后，会直接退出程序。 4. singleInstance：该模式会在新栈中创建Activity实例，并让多个应用共享该实例。一旦该模式的实例存在于某个栈中， 任何应用再激活此Activity都会重用该栈中的实例。该模式只有一个实例，并且这个实例独立运行在一个栈中， 这个栈只有这一个实例，不允许其他的Activity存在。 举例：有三个Activity D1,D2,D3，三个Activity可以互相启动，其中D2为singleInstance模式。 从D1开始运行，假如D1的栈ID为200，那么从D1启动D2后，D2会新启动一个栈，此栈ID为201， 那么再从D2启动D3后，D3的栈ID也是200，也就是D2和D1,D3不在一个栈中，栈ID201中只有一个D2的实例。 Activity生命周期图：]]></content>
+    </entry>
+
+    
+    <entry>
+      <title><![CDATA[我的第一篇博客]]></title>
+      <url>%2Fforever%2Fd95d7e09%2F</url>
+      <content type="text"><![CDATA[从开始搭建博客到现在，经历了一个星期，每天晚上9点回家开始各种百度、谷歌，各种爬坑。辛亏有各位前辈的好文章，经过各种拼接，现在终于算是可以用了。前几天一直都是在搭建环境，今天把一些插件添加好了。 多说评论：让看博客的用户可以发表自己的意见。 百度统计：统计网站访问量。 LeanCloud：统计每篇的阅读量。 对一些布局方面的小优化。现在才发现，不懂脚本语言是多么的痛苦，虽然有教程跟着慢慢修改，但是要改成自己心中的样式也不是那么容易的。 好了，博客环境到此搭建完毕，以后慢慢根据需求来添加新的功能。博客也要开始更新喽。]]></content>
+    </entry>
+
+    
+    <entry>
+      <title><![CDATA[HelloWorld]]></title>
+      <url>%2Fforever%2F77770c79%2F</url>
+      <content type="text"><![CDATA[《第一行代码》第一章1.3第一个Android项目 第一次打开Android Studio，可能会先出现欢迎界面：Welcome to Android Studio，此时直接点击右边的第一项，Start a new Android Studio project来新建一个项目 或者进入Android Studio后点击File&gt;New&gt;New Project…新建一个项目 新建项目步骤 第一个是项目名称，安装后在手机上显示的就是这个名称 第二个是包名 第三个是项目存放的位置 下一步选择项目的种类，一般我们选择第一项Phone and Tablet，选择最低兼容版本，我选择的是API15，Android4.0.3的 下一步选择一个想创建的活动类型，此时选择Empty Activity，空的活动类型 下一步为这个活动起一个名字以及创建相应的布局文件，此时默认即可 最后点击Finish完成创建完成创建后，系统会自动生成一些代码，此时项目可以直接运行，第一个项目至此完毕。]]></content>
+    </entry>
+
+    
+  
+  
+</search>
